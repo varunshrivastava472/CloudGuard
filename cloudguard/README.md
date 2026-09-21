@@ -164,31 +164,6 @@ Follow this 5-minute walk-through to evaluate the system:
    - Navigate to **Dashboard** to see updated KPI metrics and vulnerability charts.
    - Navigate to **Scan History** to view both original and remediated scans saved in persistent storage.
 
----
-
-## ☁️ Deployment Instructions
-
-### Frontend (Vercel)
-1. Push project to GitHub.
-2. Import repository in [Vercel](https://vercel.com).
-3. Set **Root Directory** to `client`.
-4. Build command: `npm run build`, Output directory: `dist`.
-5. Environment Variables: `VITE_API_BASE_URL=https://your-render-api.onrender.com/api`.
-6. SPA routing is preconfigured in `client/vercel.json`.
-
-### Backend (Render)
-1. Create a new **Web Service** in [Render](https://render.com).
-2. Set **Root Directory** to `server`.
-3. Build Command: `npm install`, Start Command: `npm start`.
-4. Configure Environment Variables:
-   - `NODE_ENV=production`
-   - `PORT=5000`
-   - `CLIENT_URL=https://your-vercel-app.vercel.app`
-   - `MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/cloudguard`
-   - `JWT_SECRET=<strong-random-key>`
-   - `GEMINI_API_KEY=<your-gemini-key>`
-
----
 
 ## 🔒 Security Safeguards
 - **Zero Real Cloud Deployments**: Evaluates configuration statically; never invokes `terraform apply` or executes uploaded files.
