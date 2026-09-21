@@ -1,0 +1,40 @@
+{
+  "storage": [
+    {
+      "name": "secure-bucket",
+      "public": false,
+      "encryption": true
+    },
+    {
+      "name": "public-backup",
+      "public": true,
+      "encryption": true
+    }
+  ],
+  "firewall": [
+    {
+      "name": "web-server",
+      "port": 443,
+      "source": "0.0.0.0/0"
+    },
+    {
+      "name": "ssh-server",
+      "port": 22,
+      "source": "10.0.0.0/24"
+    }
+  ],
+  "iam": [
+    {
+      "name": "limited-role",
+      "permissions": [
+        "s3:GetObject"
+      ]
+    },
+    {
+      "name": "overprivileged-role",
+      "permissions": [
+        "*"
+      ]
+    }
+  ]
+}

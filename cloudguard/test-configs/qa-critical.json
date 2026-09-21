@@ -1,0 +1,27 @@
+{
+  "storage": [
+    {
+      "name": "customer-data",
+      "public": true,
+      "encryption": false
+    }
+  ],
+  "firewall": [
+    {
+      "name": "production-db",
+      "port": 22,
+      "source": "0.0.0.0/0"
+    },
+    {
+      "name": "production-db",
+      "port": 5432,
+      "source": "0.0.0.0/0"
+    }
+  ],
+  "iam": [
+    {
+      "name": "admin-role",
+      "permissions": ["*"]
+    }
+  ]
+}

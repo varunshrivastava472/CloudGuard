@@ -1,0 +1,64 @@
+{
+  "provider": "demo-cloud",
+  "resources": [
+    {
+      "id": "storage-vault-backup",
+      "type": "storage",
+      "name": "corporate-encrypted-vault",
+      "publicAccess": false,
+      "encryptionEnabled": true,
+      "permissions": [],
+      "rules": []
+    },
+    {
+      "id": "firewall-internal-sg",
+      "type": "firewall",
+      "name": "internal-bastion-sg",
+      "rules": [
+        {
+          "id": "rule-ssh-bastion",
+          "port": 22,
+          "protocol": "tcp",
+          "source": "10.0.1.0/24",
+          "action": "allow",
+          "description": "Allow SSH only from internal bastion host"
+        },
+        {
+          "id": "rule-https-public",
+          "port": 443,
+          "protocol": "tcp",
+          "source": "0.0.0.0/0",
+          "action": "allow",
+          "description": "Allow standard HTTPS web traffic"
+        }
+      ]
+    },
+    {
+      "id": "iam-least-privilege",
+      "type": "iam",
+      "name": "app-backend-reader",
+      "permissions": [
+        "storage:GetObject",
+        "storage:ListBucket",
+        "kms:Decrypt"
+      ]
+    },
+    {
+      "id": "database-customer-rds",
+      "type": "database",
+      "name": "production-orders-db",
+      "publicAccess": false,
+      "encryptionEnabled": true,
+      "rules": [
+        {
+          "id": "rule-db-internal-vpc",
+          "port": 5432,
+          "protocol": "tcp",
+          "source": "10.0.2.0/24",
+          "action": "allow",
+          "description": "Allow database queries only from application tier subnet"
+        }
+      ]
+    }
+  ]
+}

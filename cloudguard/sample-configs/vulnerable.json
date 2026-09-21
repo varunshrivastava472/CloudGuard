@@ -1,0 +1,61 @@
+{
+  "provider": "demo-cloud",
+  "resources": [
+    {
+      "id": "storage-customer-data",
+      "type": "storage",
+      "name": "customer-sensitive-data",
+      "publicAccess": true,
+      "encryptionEnabled": false,
+      "permissions": [],
+      "rules": []
+    },
+    {
+      "id": "firewall-dmz-sg",
+      "type": "firewall",
+      "name": "dmz-security-group",
+      "rules": [
+        {
+          "id": "rule-ssh-public",
+          "port": 22,
+          "protocol": "tcp",
+          "source": "0.0.0.0/0",
+          "action": "allow",
+          "description": "Allow public SSH access from anywhere"
+        },
+        {
+          "id": "rule-postgres-public",
+          "port": 5432,
+          "protocol": "tcp",
+          "source": "0.0.0.0/0",
+          "action": "allow",
+          "description": "Allow direct database connection from anywhere"
+        }
+      ]
+    },
+    {
+      "id": "iam-admin-escalation",
+      "type": "iam",
+      "name": "developer-overprivileged-role",
+      "permissions": [
+        "*"
+      ]
+    },
+    {
+      "id": "database-analytics-db",
+      "type": "database",
+      "name": "analytics-db",
+      "publicAccess": true,
+      "encryptionEnabled": false,
+      "rules": [
+        {
+          "id": "rule-mysql-public",
+          "port": 3306,
+          "protocol": "tcp",
+          "source": "0.0.0.0/0",
+          "action": "allow"
+        }
+      ]
+    }
+  ]
+}

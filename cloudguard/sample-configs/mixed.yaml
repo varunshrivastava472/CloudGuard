@@ -1,0 +1,40 @@
+provider: demo-cloud
+resources:
+  - id: storage-public-assets
+    type: storage
+    name: public-web-assets
+    publicAccess: true
+    encryptionEnabled: true
+    permissions: []
+    rules: []
+
+  - id: storage-audit-logs
+    type: storage
+    name: compliance-audit-logs
+    publicAccess: false
+    encryptionEnabled: false
+    permissions: []
+    rules: []
+
+  - id: firewall-edge-router
+    type: firewall
+    name: edge-security-group
+    rules:
+      - id: rule-http-all
+        port: 80
+        protocol: tcp
+        source: 0.0.0.0/0
+        action: allow
+      - id: rule-mongodb-exposed
+        port: 27017
+        protocol: tcp
+        source: 0.0.0.0/0
+        action: allow
+        description: Exposed MongoDB port to public internet
+
+  - id: iam-microservice-writer
+    type: iam
+    name: analytics-writer-service
+    permissions:
+      - storage:PutObject
+      - storage:GetObject

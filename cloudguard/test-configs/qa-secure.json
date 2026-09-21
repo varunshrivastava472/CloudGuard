@@ -1,0 +1,30 @@
+{
+  "storage": [
+    {
+      "name": "private-customer-data",
+      "public": false,
+      "encryption": true
+    }
+  ],
+  "firewall": [
+    {
+      "name": "production",
+      "port": 22,
+      "source": "10.0.0.0/24"
+    },
+    {
+      "name": "production",
+      "port": 5432,
+      "source": "10.0.1.0/24"
+    }
+  ],
+  "iam": [
+    {
+      "name": "developer-role",
+      "permissions": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ]
+    }
+  ]
+}
