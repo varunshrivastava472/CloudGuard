@@ -1,4 +1,4 @@
-# CloudGuard (🛡️)
+# CloudGuard 
 ### Intelligent Cloud Security Misconfiguration Scanner & Remediation Assistant
 
 > **Deterministic Vulnerability Detection • Zero-Hallucination Rule Engine • Isolated AI Guidance • 1-Click Automated Remediation**
